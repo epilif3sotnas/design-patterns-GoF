@@ -7,21 +7,12 @@ import
 
 
 type
-    Admin* = ref object
-
-# type
-#     Admin* = ref object
-#         builder: Buidler
+    Admin*[TBuilder: Builder] = ref object
+        builder: TBuilder
 
 
-proc newAdmin*(): Admin =
-    return Admin()
+proc newAdmin*[T: Builder](builder: T): Admin[T] =
+    return Admin[T](builder: builder)
 
-# proc newAdmin*(builder: Builder): Admin =
-#     return Admin(builder: Builder)
-
-proc build*(self: Admin, builder: Builder): Car =
-    return builder.buildCar()
-
-# proc create*(self: Admin): Car =
-#     return self.builder.buildCar()
+proc build*(self: Admin): Car =
+    return self.builder.buildCar()
