@@ -1,3 +1,10 @@
+# std
+import
+  std/[
+    json
+  ]
+
+
 # internal
 import
   patterns/creational/abstractfactory/[
@@ -18,7 +25,13 @@ import
     zara
   ],
   patterns/creational/singleton/[
-    carstorage,
+    carstorage
+  ],
+  patterns/structural/adapter/[
+    broker,
+    government,
+    governmentadapter,
+    governmentadapterimpl
   ]
 
 
@@ -91,7 +104,13 @@ proc main() =
   # Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
   echo "\n\nDesign Pattern Adapter\n"
 
-  # Code - WIP
+  echo "Object Adapter\n"
+
+  let government = newGovernment()
+  var governmentImpl = newGovernmentAdapterImpl(government)
+  var broker = newBroker[GovernmentAdapterImpl](governmentImpl)
+
+  discard broker.sendGainsInfo(parseJson("""{"taxPayerId":1234567890, "taxPayerGains":10000}"""))
   
   ################################
 
