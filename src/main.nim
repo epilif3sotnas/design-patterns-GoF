@@ -24,7 +24,7 @@ import
 
 proc main() =
   ################################
-  # Design Pattern Abstract Factory => more information in https://en.wikipedia.org/wiki/Abstract_factory_pattern
+  # Design Pattern Abstract Factory => more information in https://refactoring.guru/design-patterns/abstract-factory
   echo "\n\nDesign Pattern Abstract Factory\n"
   
   var cat = newCat("Stewie", "Cat")
@@ -35,7 +35,7 @@ proc main() =
 
 
   ################################
-  # Design Pattern Builder => more information in https://en.wikipedia.org/wiki/Builder_pattern
+  # Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
   echo "\n\nDesign Pattern Builder\n"
 
   let setup = newSetup()
@@ -47,7 +47,7 @@ proc main() =
 
 
   ################################
-  # Design Pattern Factory Method => more information in https://en.wikipedia.org/wiki/Factory_method_pattern
+  # Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
   echo "\n\nDesign Pattern Factory Method\n"
 
   let creator = newCreator()
@@ -58,7 +58,7 @@ proc main() =
 
 
   ################################
-  # Design Pattern Prototype => more information in https://en.wikipedia.org/wiki/Prototype_pattern
+  # Design Pattern Prototype => more information in https://refactoring.guru/design-patterns/prototype
   echo "\n\nDesign Pattern Prototype\n"
 
   var zaraClothing = newZara("Zara", "Jeans", 19.99, "Mafia Guy")
@@ -77,13 +77,21 @@ proc main() =
 
 
   ################################
-  # Design Pattern Singleton => more information in https://en.wikipedia.org/wiki/Singleton_pattern
+  # Design Pattern Singleton => more information in https://refactoring.guru/design-patterns/singleton
   echo "\n\nDesign Pattern Singleton\n"
 
   getInstance().addCar("VW Golf")
   getInstance().addCar("VW Passat")
   getInstance().addCar("Ford Fiesta")
   echo getInstance().getCars()
+  
+  ################################
+
+  ################################
+  # Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
+  echo "\n\nDesign Pattern Adapter\n"
+
+  # Code - WIP
   
   ################################
 
