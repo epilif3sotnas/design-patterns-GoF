@@ -14,7 +14,8 @@ import
     company1
   ],
   patterns/creational/prototype/[
-    zara,
+    clothing,
+    zara
   ],
   patterns/creational/singleton/[
     carstorage,
