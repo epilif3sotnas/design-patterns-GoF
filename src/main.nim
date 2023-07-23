@@ -29,6 +29,7 @@ import
   ],
   patterns/structural/adapter/[
     broker,
+    classadapter,
     government,
     governmentadapter,
     governmentadapterimpl
@@ -110,7 +111,15 @@ proc main() =
   var governmentImpl = newGovernmentAdapterImpl(government)
   var broker = newBroker[GovernmentAdapterImpl](governmentImpl)
 
-  discard broker.sendGainsInfo(parseJson("""{"taxPayerId":1234567890, "taxPayerGains":10000}"""))
+  echo broker.sendGains(parseJson("""{"taxPayerId":1234567890, "taxPayerGains":10000}"""))
+
+
+  echo "\nClass Adapter\n"
+
+  let classAdapter = newClassAdapter()
+  var broker2 = newBroker[ClassAdapter](classAdapter)
+
+  echo broker2.sendGains(parseJson("""{"taxPayerId":1234562490, "taxPayerGains":156000}"""))
   
   ################################
 

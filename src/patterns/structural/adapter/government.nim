@@ -1,5 +1,5 @@
 type
-    Government* = ref object
+    Government* = ref object of RootObj
 
 
 proc newGovernment*(): Government =

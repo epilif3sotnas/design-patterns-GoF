@@ -21,5 +21,5 @@ proc newGovernmentAdapterImpl*(government: Government): GovernmentAdapterImpl =
         government: government
     )
 
-proc sendGainsInformation*(self: GovernmentAdapterImpl, data: JsonNode): bool =
+proc sendGainsInfo*(self: GovernmentAdapterImpl, data: JsonNode): bool =
     return self.government.sendGainsInformation((data["taxPayerId"].getInt().uint(), data["taxPayerGains"].getFloat()))

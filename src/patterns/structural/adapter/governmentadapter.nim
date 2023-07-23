@@ -7,4 +7,4 @@ import
 
 type
     GovernmentAdapter* = concept a
-        a.sendGainsInformation(JsonNode) is bool
+        a.sendGainsInfo(JsonNode) is bool

@@ -21,5 +21,5 @@ proc newBroker*[TAdapter: GovernmentAdapter](adapter: TAdapter): Broker[TAdapter
         adapter: adapter
     )
 
-proc sendGainsInfo*(self: Broker, data: JsonNode): bool =
-    return self.adapter.sendGainsInformation(data)
+proc sendGains*(self: Broker, data: JsonNode): bool =
+    return self.adapter.sendGainsInfo(data)
