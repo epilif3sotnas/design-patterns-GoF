@@ -33,6 +33,11 @@ import
     government,
     governmentadapter,
     governmentadapterimpl
+  ],
+  patterns/structural/bridge/[
+    tv,
+    radio,
+    remote
   ]
 
 
@@ -101,6 +106,7 @@ proc main() =
   
   ################################
 
+
   ################################
   # Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
   echo "\n\nDesign Pattern Adapter\n"
@@ -120,6 +126,37 @@ proc main() =
   var broker2 = newBroker[ClassAdapter](classAdapter)
 
   echo broker2.sendGains(parseJson("""{"taxPayerId":1234562490, "taxPayerGains":156000}"""))
+  
+  ################################
+
+
+  ################################
+  # Design Pattern Bridge => more information in https://refactoring.guru/design-patterns/bridge
+  echo "\n\nDesign Pattern Bridge\n"
+
+  var tv = newTv()
+  var radio = newRadio()
+
+  var remoteRadio = newRemote[Radio](radio)
+  echo "Radio"
+  echo radio.getDeviceInfo()
+  
+  discard remoteRadio.volumeUp()
+  discard remoteRadio.tooglePower()
+
+  echo radio.getDeviceInfo()
+
+  var remoteTv = newRemote[Tv](tv)
+  echo "\nTV"
+  echo tv.getDeviceInfo()
+
+  discard remoteTv.volumeDown()
+  discard remoteTv.channelUp()
+
+  echo tv.getDeviceInfo()
+
+
+  # var advancedRemoteTv = newAdvancedRemote(tv)
   
   ################################
 
