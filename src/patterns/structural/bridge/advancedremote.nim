@@ -7,11 +7,11 @@ import
 
 
 type
-    AdvancedRemote* = ref object of Remote[TDevice: Device]
+    AdvancedRemote*[TDevice: Device] = ref object of Remote[TDevice]
 
 
-proc newAdvancedRemote*(device: TDevice): AdvancedRemote =
-    return AdvancedRemote(device: device)
+proc newAdvancedRemote*[TDevice: Device](device: TDevice): AdvancedRemote[TDevice] =
+    return AdvancedRemote[TDevice](device: device)
 
 proc mute*(self: AdvancedRemote): bool =
     return self.device.setVolume(0)

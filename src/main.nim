@@ -35,6 +35,7 @@ import
     governmentadapterimpl
   ],
   patterns/structural/bridge/[
+    advancedremote,
     tv,
     radio,
     remote
@@ -156,7 +157,14 @@ proc main() =
   echo tv.getDeviceInfo()
 
 
-  # var advancedRemoteTv = newAdvancedRemote(tv)
+  var advancedRemoteTv = newAdvancedRemote[Tv](tv)
+
+  echo "\nTV with Advanced Remote"
+  echo tv.getDeviceInfo()
+
+  discard advancedRemoteTv.mute()
+
+  echo tv.getDeviceInfo()
   
   ################################
 

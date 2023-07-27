@@ -7,7 +7,7 @@ import
 
 type
     Remote*[TDevice: Device] = ref object of RootObj
-        device: TDevice
+        device*: TDevice
 
 
 proc newRemote*[TDevice: Device](device: TDevice): Remote[TDevice] =
