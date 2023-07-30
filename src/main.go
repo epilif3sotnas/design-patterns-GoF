@@ -11,6 +11,7 @@ import(
 	"learn-design-patterns-GoF/patterns/creational/builder"
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
 	"learn-design-patterns-GoF/patterns/creational/prototype"
+	"learn-design-patterns-GoF/patterns/creational/singleton"
 )
 
 
@@ -68,16 +69,18 @@ func main() {
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Singleton => more information in https://refactoring.guru/design-patterns/singleton
-	// echo "\n\nDesign Pattern Singleton\n"
+	// ################################
+	// Design Pattern Singleton => more information in https://refactoring.guru/design-patterns/singleton
+	fmt.Println("\n\nDesign Pattern Singleton")
   
-	// getInstance().addCar("VW Golf")
-	// getInstance().addCar("VW Passat")
-	// getInstance().addCar("Ford Fiesta")
-	// echo getInstance().getCars()
+	singleton.GetInstance().AddCar("VW-Golf")
+	singleton.GetInstance().AddCar("VW-Passat")
+	singleton.GetInstance().AddCar("Ford-Fiesta")
+
+	fmt.Println()
+	fmt.Println(singleton.GetInstance().GetCars())
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
