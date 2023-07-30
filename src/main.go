@@ -17,8 +17,8 @@ func main() {
 	fmt.Println("\n\nDesign Pattern Abstract Factory")
 	
 	cat := abstractfactory.NewCat("Stewie", "Cat")
-	abstractFactory1 := abstractfactory.NewAbstactFactory(cat)
-	fmt.Println("\n" + abstractFactory1.GetAnimalInfo())
+	abstractFactory_ := abstractfactory.NewAbstactFactory(cat)
+	fmt.Println("\n" + abstractFactory_.GetAnimalInfo())
   
 	// ################################
   

@@ -8,7 +8,7 @@ Elements of Reusable Object-Oriented Software` book.
 
 ## Requirements
 
-#### Nim => Package.nimble
+#### Go => go.mod
 
 &nbsp;
 
