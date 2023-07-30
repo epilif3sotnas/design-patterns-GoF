@@ -10,6 +10,7 @@ import(
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
 	"learn-design-patterns-GoF/patterns/creational/builder"
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
+	"learn-design-patterns-GoF/patterns/creational/prototype"
 )
 
 
@@ -48,23 +49,23 @@ func main() {
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Prototype => more information in https://refactoring.guru/design-patterns/prototype
-	// echo "\n\nDesign Pattern Prototype\n"
+	// ################################
+	// Design Pattern Prototype => more information in https://refactoring.guru/design-patterns/prototype
+	fmt.Println("\n\nDesign Pattern Prototype")
   
-	// var zaraClothing = newZara("Zara", "Jeans", 19.99, "Mafia Guy")
-	// echo zaraClothing.getClothingInfo()
+	zaraClothing := prototype.NewZara("Zara", "Jeans", 19.99, "Mafia Guy")
+	fmt.Println("\n" + zaraClothing.GetClothingInfo())
   
-	// var zaraClothing2 = zaraClothing.copy()
-	// echo zaraClothing2.getClothingInfo()
+	zaraClothing2 := zaraClothing.Copy()
+	fmt.Println(zaraClothing2.GetClothingInfo())
   
-	// zaraClothing2.setModel("T-Shirt")
-	// zaraClothing2.setPrice(15.99)
+	zaraClothing2.SetModel("T-Shirt")
+	zaraClothing2.SetPrice(15.99)
   
-	// echo zaraClothing.getClothingInfo()
-	// echo zaraClothing2.getClothingInfo()
+	fmt.Println(zaraClothing.GetClothingInfo())
+	fmt.Println(zaraClothing2.GetClothingInfo())
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
