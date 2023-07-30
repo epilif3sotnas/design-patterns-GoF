@@ -1,17 +1,5 @@
 proc main() =
   ################################
-  # Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
-  echo "\n\nDesign Pattern Builder\n"
-
-  let setup = newSetup()
-  let admin = newAdmin[Setup](setup)
-  var car: Car = admin.build()
-  echo car.getCarInfo()
-  
-  ################################
-
-
-  ################################
   # Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
   echo "\n\nDesign Pattern Factory Method\n"
 

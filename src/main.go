@@ -8,6 +8,7 @@ import(
 // internal
 import(
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
+	"learn-design-patterns-GoF/patterns/creational/builder"
 )
 
 
@@ -23,16 +24,16 @@ func main() {
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
-	// echo "\n\nDesign Pattern Builder\n"
+	// ################################
+	// Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
+	fmt.Println("\n\nDesign Pattern Builder")
   
-	// let setup = newSetup()
-	// let admin = newAdmin[Setup](setup)
-	// var car: Car = admin.build()
-	// echo car.getCarInfo()
+	setup := builder.NewSetup()
+	admin := builder.NewAdmin(setup)
+	car := admin.Build()
+	fmt.Println(car.GetCarInfo())
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
