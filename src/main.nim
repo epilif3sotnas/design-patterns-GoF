@@ -1,59 +1,4 @@
-# std
-import
-  std/[
-    json
-  ]
-
-
-# internal
-import
-  patterns/creational/abstractfactory/[
-    abstractfactory,
-    cat
-  ],
-  patterns/creational/builder/[
-    admin,
-    car,
-    setup
-  ],
-  patterns/creational/factorymethod/[
-    creator,
-    company1
-  ],
-  patterns/creational/prototype/[
-    clothing,
-    zara
-  ],
-  patterns/creational/singleton/[
-    carstorage
-  ],
-  patterns/structural/adapter/[
-    broker,
-    classadapter,
-    government,
-    governmentadapter,
-    governmentadapterimpl
-  ],
-  patterns/structural/bridge/[
-    advancedremote,
-    tv,
-    radio,
-    remote
-  ]
-
-
 proc main() =
-  ################################
-  # Design Pattern Abstract Factory => more information in https://refactoring.guru/design-patterns/abstract-factory
-  echo "\n\nDesign Pattern Abstract Factory\n"
-  
-  var cat = newCat("Stewie", "Cat")
-  var abstractFactory = newAbstactFactory[Cat](cat)
-  echo abstractFactory.getAnimalInfo()
-
-  ################################
-
-
   ################################
   # Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
   echo "\n\nDesign Pattern Builder\n"
@@ -166,6 +111,24 @@ proc main() =
 
   echo tv.getDeviceInfo()
   
+  ################################
+
+
+  ################################
+  # Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
+  echo "\n\nDesign Pattern Composite\n"
+
+  var circle = newCircle(0, 0, PI)
+  var dot = newDot(0, 0)
+  
+  var coumpoundGraphic = newCoumpoundGraphic()
+  coumpoundGraphic.add(circle)
+  coumpoundGraphic.add(dot)
+
+  discard coumpoundGraphic.draw()
+  discard coumpoundGraphic.move(1,1)
+  discard coumpoundGraphic.draw()
+
   ################################
 
 when isMainModule:
