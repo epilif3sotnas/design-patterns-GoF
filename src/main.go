@@ -9,6 +9,7 @@ import(
 import(
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
 	"learn-design-patterns-GoF/patterns/creational/builder"
+	"learn-design-patterns-GoF/patterns/creational/factorymethod"
 )
 
 
@@ -31,20 +32,20 @@ func main() {
 	setup := builder.NewSetup()
 	admin := builder.NewAdmin(setup)
 	car := admin.Build()
-	fmt.Println(car.GetCarInfo())
+	fmt.Println("\n" + car.GetCarInfo())
 	
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
-	// echo "\n\nDesign Pattern Factory Method\n"
+	// ################################
+	// Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
+	fmt.Println("\n\nDesign Pattern Factory Method")
   
-	// let creator = newCreator()
-	// var company: Company1 = create[Company1](creator)
-	// echo company.getCompanyInfo()
+	creator := factorymethod.NewCreator()
+	company := creator.Create()
+	fmt.Println("\n" + company.GetCompanyInfo())
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
