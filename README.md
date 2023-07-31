@@ -18,8 +18,8 @@ Elements of Reusable Object-Oriented Software` book.
 Commands to run the project:
 
 ```
-cd {PATH_REPOSITORY};
-nimble run;
+cd {PATH_REPOSITORY}/src/;
+go run .;
 ```
 
 &nbsp;

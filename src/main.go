@@ -1,9 +1,12 @@
 package main
 
+
 // std
-import(
+import (
+	"encoding/json"
 	"fmt"
 )
+
 
 // internal
 import(
@@ -12,50 +15,51 @@ import(
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
 	"learn-design-patterns-GoF/patterns/creational/prototype"
 	"learn-design-patterns-GoF/patterns/creational/singleton"
+	"learn-design-patterns-GoF/patterns/structural/adapter"
 )
 
 
 func main() {
 	// ################################
 	//  Design Pattern Abstract Factory => more information in https://refactoring.guru/design-patterns/abstract-factory
-	fmt.Println("\n\nDesign Pattern Abstract Factory")
+	fmt.Println("\n\nDesign Pattern Abstract Factory\n")
 	
 	cat := abstractfactory.NewCat("Stewie", "Cat")
 	abstractFactory_ := abstractfactory.NewAbstactFactory(cat)
-	fmt.Println("\n" + abstractFactory_.GetAnimalInfo())
+	fmt.Println(abstractFactory_.GetAnimalInfo())
   
 	// ################################
   
   
 	// ################################
 	// Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
-	fmt.Println("\n\nDesign Pattern Builder")
+	fmt.Println("\n\nDesign Pattern Builder\n")
   
 	setup := builder.NewSetup()
 	admin := builder.NewAdmin(setup)
 	car := admin.Build()
-	fmt.Println("\n" + car.GetCarInfo())
+	fmt.Println(car.GetCarInfo())
 	
 	// ################################
   
   
 	// ################################
 	// Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
-	fmt.Println("\n\nDesign Pattern Factory Method")
+	fmt.Println("\n\nDesign Pattern Factory Method\n")
   
 	creator := factorymethod.NewCreator()
 	company := creator.Create()
-	fmt.Println("\n" + company.GetCompanyInfo())
+	fmt.Println(company.GetCompanyInfo())
 	
 	// ################################
   
   
 	// ################################
 	// Design Pattern Prototype => more information in https://refactoring.guru/design-patterns/prototype
-	fmt.Println("\n\nDesign Pattern Prototype")
+	fmt.Println("\n\nDesign Pattern Prototype\n")
   
 	zaraClothing := prototype.NewZara("Zara", "Jeans", 19.99, "Mafia Guy")
-	fmt.Println("\n" + zaraClothing.GetClothingInfo())
+	fmt.Println(zaraClothing.GetClothingInfo())
   
 	zaraClothing2 := zaraClothing.Copy()
 	fmt.Println(zaraClothing2.GetClothingInfo())
@@ -71,39 +75,48 @@ func main() {
   
 	// ################################
 	// Design Pattern Singleton => more information in https://refactoring.guru/design-patterns/singleton
-	fmt.Println("\n\nDesign Pattern Singleton")
+	fmt.Println("\n\nDesign Pattern Singleton\n")
   
 	singleton.GetInstance().AddCar("VW-Golf")
 	singleton.GetInstance().AddCar("VW-Passat")
 	singleton.GetInstance().AddCar("Ford-Fiesta")
 
-	fmt.Println()
 	fmt.Println(singleton.GetInstance().GetCars())
 	
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
-	// echo "\n\nDesign Pattern Adapter\n"
+	// ################################
+	// Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
+	fmt.Println("\n\nDesign Pattern Adapter\n")
   
-	// echo "Object Adapter\n"
+	fmt.Println("Object Adapter\n")
   
-	// let government = newGovernment()
-	// var governmentImpl = newGovernmentAdapterImpl(government)
-	// var broker = newBroker[GovernmentAdapterImpl](governmentImpl)
+	government := adapter.NewGovernment()
+	governmentImpl := adapter.NewGovernmentAdapterImpl(government)
+	broker := adapter.NewBroker(governmentImpl)
+
+	value, _ := json.Marshal(map[string]any{
+		"tax_payer_id": "1234567890",
+		"tax_payer_gains": 10000,
+	})
+
+	broker.SendGains(value)
   
-	// echo broker.sendGains(parseJson("""{"taxPayerId":1234567890, "taxPayerGains":10000}"""))
   
+	fmt.Println("\nClass Adapter\n")
   
-	// echo "\nClass Adapter\n"
-  
-	// let classAdapter = newClassAdapter()
-	// var broker2 = newBroker[ClassAdapter](classAdapter)
-  
-	// echo broker2.sendGains(parseJson("""{"taxPayerId":1234562490, "taxPayerGains":156000}"""))
+	classAdapter := adapter.NewClassAdapter()
+	broker2 := adapter.NewBroker(classAdapter)
+
+	value2, _ := json.Marshal(map[string]any{
+		"tax_payer_id": "1234567890",
+		"tax_payer_gains": 10000,
+	})
+
+	broker2.SendGains(value2)
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
