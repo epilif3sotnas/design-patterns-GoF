@@ -16,6 +16,7 @@ import(
 	"learn-design-patterns-GoF/patterns/creational/prototype"
 	"learn-design-patterns-GoF/patterns/creational/singleton"
 	"learn-design-patterns-GoF/patterns/structural/adapter"
+	"learn-design-patterns-GoF/patterns/structural/bridge"
 )
 
 
@@ -119,42 +120,42 @@ func main() {
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Bridge => more information in https://refactoring.guru/design-patterns/bridge
-	// echo "\n\nDesign Pattern Bridge\n"
+	// ################################
+	// Design Pattern Bridge => more information in https://refactoring.guru/design-patterns/bridge
+	fmt.Println("\n\nDesign Pattern Bridge\n")
   
-	// var tv = newTv()
-	// var radio = newRadio()
+	tv := bridge.NewTv()
+	radio := bridge.NewRadio()
   
-	// var remoteRadio = newRemote[Radio](radio)
-	// echo "Radio"
-	// echo radio.getDeviceInfo()
+	remoteRadio := bridge.NewRemote(radio)
+	fmt.Println("Radio")
+	fmt.Println(radio.GetDeviceInfo())
 	
-	// discard remoteRadio.volumeUp()
-	// discard remoteRadio.tooglePower()
+	remoteRadio.VolumeUp()
+	remoteRadio.TooglePower()
   
-	// echo radio.getDeviceInfo()
+	fmt.Println(radio.GetDeviceInfo())
   
-	// var remoteTv = newRemote[Tv](tv)
-	// echo "\nTV"
-	// echo tv.getDeviceInfo()
+	var remoteTv = bridge.NewRemote(tv)
+	fmt.Println("\nTV")
+	fmt.Println(tv.GetDeviceInfo())
   
-	// discard remoteTv.volumeDown()
-	// discard remoteTv.channelUp()
+	remoteTv.VolumeDown()
+	remoteTv.ChannelUp()
   
-	// echo tv.getDeviceInfo()
+	fmt.Println(tv.GetDeviceInfo())
   
   
-	// var advancedRemoteTv = newAdvancedRemote[Tv](tv)
+	advancedRemoteTv := bridge.NewAdvancedRemote(tv)
   
-	// echo "\nTV with Advanced Remote"
-	// echo tv.getDeviceInfo()
+	fmt.Println("\nTV with Advanced Remote")
+	fmt.Println(tv.GetDeviceInfo())
   
-	// discard advancedRemoteTv.mute()
+	advancedRemoteTv.Mute()
   
-	// echo tv.getDeviceInfo()
+	fmt.Println(tv.GetDeviceInfo())
 	
-	// // ################################
+	// ################################
   
   
 	// // ################################
