@@ -5,6 +5,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 )
 
 
@@ -17,6 +18,7 @@ import(
 	"learn-design-patterns-GoF/patterns/creational/singleton"
 	"learn-design-patterns-GoF/patterns/structural/adapter"
 	"learn-design-patterns-GoF/patterns/structural/bridge"
+	"learn-design-patterns-GoF/patterns/structural/composite"
 )
 
 
@@ -158,20 +160,20 @@ func main() {
 	// ################################
   
   
-	// // ################################
-	// // Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
-	// echo "\n\nDesign Pattern Composite\n"
+	// ################################
+	// Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
+	fmt.Println("\n\nDesign Pattern Composite\n")
   
-	// var circle = newCircle(0, 0, PI)
-	// var dot = newDot(0, 0)
+	circle := composite.NewCircle(0, 0, math.Pi)
+	dot := composite.NewDot(0, 0)
 	
-	// var coumpoundGraphic = newCoumpoundGraphic()
-	// coumpoundGraphic.add(circle)
-	// coumpoundGraphic.add(dot)
+	coumpoundGraphic := composite.NewCoumpoundGraphic()
+	coumpoundGraphic.AddChild(circle)
+	coumpoundGraphic.AddChild(dot)
   
-	// discard coumpoundGraphic.draw()
-	// discard coumpoundGraphic.move(1,1)
-	// discard coumpoundGraphic.draw()
+	coumpoundGraphic.Draw()
+	coumpoundGraphic.Move(1,1)
+	coumpoundGraphic.Draw()
   
-	// // ################################
+	// ################################
 }
