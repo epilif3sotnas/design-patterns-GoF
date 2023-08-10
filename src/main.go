@@ -19,6 +19,7 @@ import(
 	"learn-design-patterns-GoF/patterns/structural/adapter"
 	"learn-design-patterns-GoF/patterns/structural/bridge"
 	"learn-design-patterns-GoF/patterns/structural/composite"
+	"learn-design-patterns-GoF/patterns/structural/decorator"
 )
 
 
@@ -174,6 +175,26 @@ func main() {
 	coumpoundGraphic.Draw()
 	coumpoundGraphic.Move(1,1)
 	coumpoundGraphic.Draw()
+  
+	// ################################
+
+
+	// ################################
+	// Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
+	fmt.Println("\n\nDesign Pattern Decorator\n")
+  
+	file := decorator.NewFileDataSource("test")
+	file.WriteData([]byte("Data to test! Eheheh"))
+
+	encryption := decorator.NewEncryptionDecorator(file)
+
+	fmt.Println("\nFile raw")
+	fmt.Println(string(file.ReadData()))
+
+	fmt.Println("\nFile Encrypted")
+	encryption.WriteData(file.ReadData())
+	fmt.Println(string(file.ReadData()))
+	fmt.Println(string(encryption.ReadData()))
   
 	// ################################
 }
