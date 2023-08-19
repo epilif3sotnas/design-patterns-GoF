@@ -8,9 +8,8 @@ import (
 	"math"
 )
 
-
 // internal
-import(
+import (
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
 	"learn-design-patterns-GoF/patterns/creational/builder"
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
@@ -20,6 +19,7 @@ import(
 	"learn-design-patterns-GoF/patterns/structural/bridge"
 	"learn-design-patterns-GoF/patterns/structural/composite"
 	"learn-design-patterns-GoF/patterns/structural/decorator"
+	"learn-design-patterns-GoF/patterns/structural/facade"
 )
 
 
@@ -180,7 +180,7 @@ func main() {
 
 
 	// ################################
-	// Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
+	// Design Pattern Decorator => more information in https://refactoring.guru/design-patterns/decorator
 	fmt.Println("\n\nDesign Pattern Decorator\n")
   
 	file := decorator.NewFileDataSource("test")
@@ -195,6 +195,16 @@ func main() {
 	encryption.WriteData(file.ReadData())
 	fmt.Println(string(file.ReadData()))
 	fmt.Println(string(encryption.ReadData()))
+  
+	// ################################
+
+
+	// ################################
+	// Design Pattern Facade => more information in https://refactoring.guru/design-patterns/facade
+	fmt.Println("\n\nDesign Pattern Facade\n")
+  
+	computer := facade.NewComputer()
+	computer.Start()
   
 	// ################################
 }
