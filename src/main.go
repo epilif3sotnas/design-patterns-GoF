@@ -20,6 +20,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/composite"
 	"learn-design-patterns-GoF/patterns/structural/decorator"
 	"learn-design-patterns-GoF/patterns/structural/facade"
+	"learn-design-patterns-GoF/patterns/structural/flyweight"
 )
 
 
@@ -206,5 +207,21 @@ func main() {
 	computer := facade.NewComputer()
 	computer.Start()
   
+	// ################################
+
+
+	// ################################
+	// Design Pattern Flyweight => more information in https://refactoring.guru/design-patterns/flyweight
+	fmt.Println("\n\nDesign Pattern Flyweight\n")
+  
+	forest := flyweight.NewForest()
+	forest.PlantTree(13.12, 12.12, "Ash", "green", "wood")
+	forest.PlantTree(12.12, 12.2, "Beech", "red", "wood")
+	forest.PlantTree(1.12, 11.12, "Cherry", "white", "plant")
+	forest.PlantTree(12.12, 2.12, "Aspen", "green", "wood")
+
+	canvas := flyweight.NewCanvas(100, 100)
+	forest.Draw(canvas)
+
 	// ################################
 }

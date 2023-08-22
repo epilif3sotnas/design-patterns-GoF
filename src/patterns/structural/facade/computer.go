@@ -22,3 +22,27 @@ func (self *Computer) Start() {
 	self.cpu.Jump(0x80fef1)
 	self.cpu.Execute()
 }
+
+func (self *Computer) GetCpu() *Cpu {
+	return self.cpu
+}
+
+func (self *Computer) SetCpu(cpu *Cpu) {
+	self.cpu = cpu
+}
+
+func (self *Computer) GetHardDrive() *HardDrive {
+	return self.hardDrive
+}
+
+func (self *Computer) SetHardDrive(hardDrive *HardDrive) {
+	self.hardDrive = hardDrive
+}
+
+func (self *Computer) GetMemory() *Memory {
+	return self.memory
+}
+
+func (self *Computer) SetMemory(memory *Memory) {
+	self.memory = memory
+}
