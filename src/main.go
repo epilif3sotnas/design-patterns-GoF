@@ -21,6 +21,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/decorator"
 	"learn-design-patterns-GoF/patterns/structural/facade"
 	"learn-design-patterns-GoF/patterns/structural/flyweight"
+	"learn-design-patterns-GoF/patterns/structural/proxy"
 )
 
 
@@ -222,6 +223,22 @@ func main() {
 
 	canvas := flyweight.NewCanvas(100, 100)
 	forest.Draw(canvas)
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Proxy => more information in https://refactoring.guru/design-patterns/proxy
+	fmt.Println("\n\nDesign Pattern Proxy\n")
+  
+	aYoutubeService := proxy.NewThirdPartyYoutubeClass()
+	aYoutubeProxy := proxy.NewCachedYoutubeClass(aYoutubeService)
+	youtubeManager := proxy.NewYoutubeManager(aYoutubeProxy)
+
+	youtubeManager.RenderListPanel()
+	youtubeManager.RenderVideoPage("AAA")
+	youtubeManager.RenderVideo("AAA")
+	
 
 	// ################################
 }
