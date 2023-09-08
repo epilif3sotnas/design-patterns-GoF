@@ -22,6 +22,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/facade"
 	"learn-design-patterns-GoF/patterns/structural/flyweight"
 	"learn-design-patterns-GoF/patterns/structural/proxy"
+	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
 )
 
 
@@ -238,7 +239,37 @@ func main() {
 	youtubeManager.RenderListPanel()
 	youtubeManager.RenderVideoPage("AAA")
 	youtubeManager.RenderVideo("AAA")
-	
 
+	// ################################
+
+
+	// ################################
+	// Design Pattern Chain of Responsability => more information in https://refactoring.guru/design-patterns/chain-of-responsibility
+	fmt.Println("\n\nDesign Pattern Chain of Responsability\n")
+  
+	dialog := chainofresponsability.NewDialog(
+		nil,
+		"Dialog: Tool Tip Text",
+		[]*chainofresponsability.Component{},
+		"Dialog: Wiki Page URL",
+	)
+	panel := chainofresponsability.NewPanel(
+		nil,
+		"Panel: Tool Tip Text",
+		[]*chainofresponsability.Component{},
+		"Panel: Model Help Text",
+	)
+	button := chainofresponsability.NewButton(
+		nil,
+		"Button: Tool Tip Text",
+	)
+
+	panel.Add(&button.Component)
+	dialog.Add(&panel.Component)
+
+	dialog.ShowHelp()
+	panel.ShowHelp()
+	button.ShowHelp()
+	
 	// ################################
 }
