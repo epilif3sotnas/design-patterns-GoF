@@ -23,6 +23,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/flyweight"
 	"learn-design-patterns-GoF/patterns/structural/proxy"
 	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
+	"learn-design-patterns-GoF/patterns/behavioral/command"
 )
 
 
@@ -270,6 +271,48 @@ func main() {
 	dialog.ShowHelp()
 	panel.ShowHelp()
 	button.ShowHelp()
+	
+	// ################################
+
+
+	// ################################
+	// Design Pattern Command => more information in https://refactoring.guru/design-patterns/command
+	fmt.Println("\n\nDesign Pattern Command\n")
+  
+	editor := command.NewEditor("Hello, World!")
+	commandHistory := command.NewCommandHistory([]command.Command{})
+
+	app := command.NewApplication(
+		"I AM HERE",
+		[]*command.Editor{editor},
+		editor,
+		commandHistory,
+	)
+	app.InitCommands()
+
+	fmt.Println("1 (No Command):", app.GetActiveEditor().GetSelection())
+
+	app.ExecuteCommand(command.PASTE)
+	fmt.Println("2 (PASTE Command):", app.GetActiveEditor().GetSelection())
+	
+	app.ExecuteCommand(command.UNDO)
+	fmt.Println("3 (UNDO Command):", app.GetActiveEditor().GetSelection())
+
+	app.ExecuteCommand(command.CUT)
+	fmt.Println("4 (CUT Command):", app.GetActiveEditor().GetSelection())
+
+	app.ExecuteCommand(command.PASTE)
+	fmt.Println("5 (PASTE Command):", app.GetActiveEditor().GetSelection())
+
+	app.SetClipboard(app.GetActiveEditor().GetSelection() + "\tA New Line")
+	app.ExecuteCommand(command.PASTE)
+	fmt.Println("6 (PASTE Command):", app.GetActiveEditor().GetSelection())
+
+	app.ExecuteCommand(command.COPY)
+	fmt.Println("7 (COPY Command):", app.GetActiveEditor().GetSelection())
+
+	app.ExecuteCommand(command.PASTE)
+	fmt.Println("8 (PASTE Command):", app.GetActiveEditor().GetSelection())
 	
 	// ################################
 }
