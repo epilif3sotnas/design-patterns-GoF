@@ -24,6 +24,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/proxy"
 	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
 	"learn-design-patterns-GoF/patterns/behavioral/command"
+	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
 )
 
 
@@ -313,6 +314,30 @@ func main() {
 
 	app.ExecuteCommand(command.PASTE)
 	fmt.Println("8 (PASTE Command):", app.GetActiveEditor().GetSelection())
+	
+	// ################################
+
+
+	// ################################
+	// Design Pattern Interpreter => more information in https://refactoring.guru/design-patterns/interpreter
+	fmt.Println("\n\nDesign Pattern Interpreter\n")
+  
+	person1 := interpreter.NewTerminalExpression("Filipe")
+	person2 := interpreter.NewTerminalExpression("Santos")
+	isSingle := interpreter.NewOrExpression(person1, person2)
+
+	vikram := interpreter.NewTerminalExpression("Vikram")
+	committed := interpreter.NewTerminalExpression("Committed")
+	isCommitted := interpreter.NewAndExpression(vikram, committed)
+
+	fmt.Println(isSingle.Interpreter("Kushagra"))
+	fmt.Println(isSingle.Interpreter("Lokesh"))
+	fmt.Println(isSingle.Interpreter("Filipe"))
+	fmt.Println(isSingle.Interpreter("Achint"))
+	fmt.Println(isSingle.Interpreter("Santos"))
+		
+	fmt.Println(isCommitted.Interpreter("Committed, Vikram"))
+	fmt.Println(isCommitted.Interpreter("Single, Vikram"))
 	
 	// ################################
 }
