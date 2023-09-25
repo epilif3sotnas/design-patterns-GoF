@@ -25,13 +25,14 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
 	"learn-design-patterns-GoF/patterns/behavioral/command"
 	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
+	"learn-design-patterns-GoF/patterns/behavioral/iterator"
 )
 
 
 func main() {
 	// ################################
 	//  Design Pattern Abstract Factory => more information in https://refactoring.guru/design-patterns/abstract-factory
-	fmt.Println("\n\nDesign Pattern Abstract Factory\n")
+	fmt.Print("\n\nDesign Pattern Abstract Factory\n\n")
 	
 	cat := abstractfactory.NewCat("Stewie", "Cat")
 	abstractFactory_ := abstractfactory.NewAbstactFactory(cat)
@@ -42,7 +43,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Builder => more information in https://refactoring.guru/design-patterns/builder
-	fmt.Println("\n\nDesign Pattern Builder\n")
+	fmt.Print("\n\nDesign Pattern Builder\n\n")
   
 	setup := builder.NewSetup()
 	admin := builder.NewAdmin(setup)
@@ -54,7 +55,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Factory Method => more information in https://refactoring.guru/design-patterns/factory-method
-	fmt.Println("\n\nDesign Pattern Factory Method\n")
+	fmt.Print("\n\nDesign Pattern Factory Method\n\n")
   
 	creator := factorymethod.NewCreator()
 	company := creator.Create()
@@ -65,7 +66,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Prototype => more information in https://refactoring.guru/design-patterns/prototype
-	fmt.Println("\n\nDesign Pattern Prototype\n")
+	fmt.Print("\n\nDesign Pattern Prototype\n\n")
   
 	zaraClothing := prototype.NewZara("Zara", "Jeans", 19.99, "Mafia Guy")
 	fmt.Println(zaraClothing.GetClothingInfo())
@@ -84,7 +85,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Singleton => more information in https://refactoring.guru/design-patterns/singleton
-	fmt.Println("\n\nDesign Pattern Singleton\n")
+	fmt.Print("\n\nDesign Pattern Singleton\n\n")
   
 	singleton.GetInstance().AddCar("VW-Golf")
 	singleton.GetInstance().AddCar("VW-Passat")
@@ -97,9 +98,9 @@ func main() {
   
 	// ################################
 	// Design Pattern Adapter => more information in https://refactoring.guru/design-patterns/adapter
-	fmt.Println("\n\nDesign Pattern Adapter\n")
+	fmt.Print("\n\nDesign Pattern Adapter\n\n")
   
-	fmt.Println("Object Adapter\n")
+	fmt.Print("Object Adapter\n\n")
   
 	government := adapter.NewGovernment()
 	governmentImpl := adapter.NewGovernmentAdapterImpl(government)
@@ -113,7 +114,7 @@ func main() {
 	broker.SendGains(value)
   
   
-	fmt.Println("\nClass Adapter\n")
+	fmt.Print("\nClass Adapter\n\n")
   
 	classAdapter := adapter.NewClassAdapter()
 	broker2 := adapter.NewBroker(classAdapter)
@@ -130,7 +131,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Bridge => more information in https://refactoring.guru/design-patterns/bridge
-	fmt.Println("\n\nDesign Pattern Bridge\n")
+	fmt.Print("\n\nDesign Pattern Bridge\n\n")
   
 	tv := bridge.NewTv()
 	radio := bridge.NewRadio()
@@ -168,7 +169,7 @@ func main() {
   
 	// ################################
 	// Design Pattern Composite => more information in https://refactoring.guru/design-patterns/composite
-	fmt.Println("\n\nDesign Pattern Composite\n")
+	fmt.Print("\n\nDesign Pattern Composite\n\n")
   
 	circle := composite.NewCircle(0, 0, math.Pi)
 	dot := composite.NewDot(0, 0)
@@ -186,7 +187,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Decorator => more information in https://refactoring.guru/design-patterns/decorator
-	fmt.Println("\n\nDesign Pattern Decorator\n")
+	fmt.Print("\n\nDesign Pattern Decorator\n\n")
   
 	file := decorator.NewFileDataSource("test")
 	file.WriteData([]byte("Data to test! Eheheh"))
@@ -206,7 +207,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Facade => more information in https://refactoring.guru/design-patterns/facade
-	fmt.Println("\n\nDesign Pattern Facade\n")
+	fmt.Print("\n\nDesign Pattern Facade\n\n")
   
 	computer := facade.NewComputer()
 	computer.Start()
@@ -216,7 +217,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Flyweight => more information in https://refactoring.guru/design-patterns/flyweight
-	fmt.Println("\n\nDesign Pattern Flyweight\n")
+	fmt.Print("\n\nDesign Pattern Flyweight\n\n")
   
 	forest := flyweight.NewForest()
 	forest.PlantTree(13.12, 12.12, "Ash", "green", "wood")
@@ -232,7 +233,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Proxy => more information in https://refactoring.guru/design-patterns/proxy
-	fmt.Println("\n\nDesign Pattern Proxy\n")
+	fmt.Print("\n\nDesign Pattern Proxy\n\n")
   
 	aYoutubeService := proxy.NewThirdPartyYoutubeClass()
 	aYoutubeProxy := proxy.NewCachedYoutubeClass(aYoutubeService)
@@ -247,7 +248,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Chain of Responsability => more information in https://refactoring.guru/design-patterns/chain-of-responsibility
-	fmt.Println("\n\nDesign Pattern Chain of Responsability\n")
+	fmt.Print("\n\nDesign Pattern Chain of Responsability\n\n")
   
 	dialog := chainofresponsability.NewDialog(
 		nil,
@@ -278,7 +279,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Command => more information in https://refactoring.guru/design-patterns/command
-	fmt.Println("\n\nDesign Pattern Command\n")
+	fmt.Print("\n\nDesign Pattern Command\n\n")
   
 	editor := command.NewEditor("Hello, World!")
 	commandHistory := command.NewCommandHistory([]command.Command{})
@@ -320,7 +321,7 @@ func main() {
 
 	// ################################
 	// Design Pattern Interpreter => more information in https://refactoring.guru/design-patterns/interpreter
-	fmt.Println("\n\nDesign Pattern Interpreter\n")
+	fmt.Print("\n\nDesign Pattern Interpreter\n\n")
   
 	person1 := interpreter.NewTerminalExpression("Filipe")
 	person2 := interpreter.NewTerminalExpression("Santos")
@@ -339,5 +340,21 @@ func main() {
 	fmt.Println(isCommitted.Interpreter("Committed, Vikram"))
 	fmt.Println(isCommitted.Interpreter("Single, Vikram"))
 	
+	// ################################
+
+
+	// ################################
+	// Design Pattern Iterator => more information in https://refactoring.guru/design-patterns/iterator
+	fmt.Print("\n\nDesign Pattern Iterator\n\n")
+
+	socialSpammer := iterator.NewSocialSpammer()
+	facebook := iterator.NewFacebook()
+
+	profile1 := iterator.NewProfile("1", "email@example.com")
+
+	app2 := iterator.NewApplication(socialSpammer, facebook)
+	app2.SendSpamToFriends(profile1)
+	app2.SendSpamToCoworkers(profile1)
+
 	// ################################
 }
