@@ -26,6 +26,7 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/command"
 	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
 	"learn-design-patterns-GoF/patterns/behavioral/iterator"
+	"learn-design-patterns-GoF/patterns/behavioral/mediator"
 )
 
 
@@ -355,6 +356,40 @@ func main() {
 	app2 := iterator.NewApplication(socialSpammer, facebook)
 	app2.SendSpamToFriends(profile1)
 	app2.SendSpamToCoworkers(profile1)
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Mediator => more information in https://refactoring.guru/design-patterns/mediator
+	fmt.Print("\n\nDesign Pattern Mediator\n\n")
+
+	authenticationDialog := mediator.NewAuthenticationDialog("")
+
+
+	checkboxMediator := mediator.NewCheckBox(authenticationDialog)
+	buttonMediator := mediator.NewButton(authenticationDialog)
+	textboxMediator := mediator.NewTextBox(authenticationDialog)
+
+	authenticationDialog.SetLoginOrRegisterChkBx(checkboxMediator)
+
+	checkboxMediator.Check()
+	fmt.Println("Status: ", authenticationDialog.GetTitle())
+	buttonMediator.Click()
+	fmt.Println("Status: ", authenticationDialog.GetTitle())
+	textboxMediator.KeyPress()
+	fmt.Println("Status: ", authenticationDialog.GetTitle())
+
+	authenticationDialog.GetLoginOrRegisterChkBx().SetChecked(false)
+	buttonMediator.Click()
+	fmt.Println("Status: ", authenticationDialog.GetTitle())
+
+	authenticationDialog.GetLoginOrRegisterChkBx().SetChecked(true)
+
+	for i := 0; i < 5; i++ {
+		buttonMediator.Click()
+		fmt.Println("Status: ", authenticationDialog.GetTitle())
+	}
 
 	// ################################
 }
