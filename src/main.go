@@ -27,6 +27,7 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
 	"learn-design-patterns-GoF/patterns/behavioral/iterator"
 	"learn-design-patterns-GoF/patterns/behavioral/mediator"
+	"learn-design-patterns-GoF/patterns/behavioral/memento"
 )
 
 
@@ -390,6 +391,45 @@ func main() {
 		buttonMediator.Click()
 		fmt.Println("Status: ", authenticationDialog.GetTitle())
 	}
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Memento => more information in https://refactoring.guru/design-patterns/memento
+	fmt.Print("\n\nDesign Pattern Memento\n\n")
+
+	editor_ := memento.NewEditor()
+	command_ := memento.NewCommand()
+
+	editor_.SetText("Test 1")
+	command_.MakeBackup(editor_)
+
+	editor_.SetText("Test 2")
+	editor_.SetText("Test 3")
+	editor_.SetCursor(1,32)
+	editor_.SetSelectionWidth(1)
+
+	fmt.Print(
+		"Editor Information:",
+		"\nText: ", editor_.GetText(),
+		"\nX: ", editor_.GetCurX(),
+		"\nY: ", editor_.GetCurY(),
+		"\nSelection Width: ", editor_.GetSelectionWidth(),
+	)
+
+	fmt.Println("\n\nRestoring editor...")
+
+	command_.Undo()
+	
+	fmt.Print(
+		"\nEditor Information:",
+		"\nText: ", editor_.GetText(),
+		"\nX: ", editor_.GetCurX(),
+		"\nY: ", editor_.GetCurY(),
+		"\nSelection Width: ", editor_.GetSelectionWidth(),
+		"\n",
+	)
 
 	// ################################
 }
