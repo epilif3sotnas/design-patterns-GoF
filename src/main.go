@@ -28,6 +28,7 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/iterator"
 	"learn-design-patterns-GoF/patterns/behavioral/mediator"
 	"learn-design-patterns-GoF/patterns/behavioral/memento"
+	"learn-design-patterns-GoF/patterns/behavioral/observer"
 )
 
 
@@ -430,6 +431,20 @@ func main() {
 		"\nSelection Width: ", editor_.GetSelectionWidth(),
 		"\n",
 	)
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Observer => more information in https://refactoring.guru/design-patterns/observer
+	fmt.Print("\n\nDesign Pattern Observer\n\n")
+
+	eventManager := observer.NewEventManager()
+	editor1_ := observer.NewEditor(eventManager)
+	app_ := observer.NewApplication(editor1_)
+
+	app_.Config()
+	app_.Run()
 
 	// ################################
 }
