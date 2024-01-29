@@ -29,6 +29,7 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/mediator"
 	"learn-design-patterns-GoF/patterns/behavioral/memento"
 	"learn-design-patterns-GoF/patterns/behavioral/observer"
+	"learn-design-patterns-GoF/patterns/behavioral/state"
 )
 
 
@@ -445,6 +446,34 @@ func main() {
 
 	app_.Config()
 	app_.Run()
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern State => more information in https://refactoring.guru/design-patterns/state
+	fmt.Print("\n\nDesign Pattern State\n\n")
+
+	player := state.NewAudioPlayer(
+		50,
+		[]string{"music1", "music2", "music3", "music4", "music5", "music6", "music7"},
+		"music1",
+		0,
+	)
+	
+	player.SetState(state.NewReadyState(player))
+
+	for i := 0; i < 3; i++ {
+		player.ClickPlay()
+		player.ClickPlay()
+		player.ClickNext()
+		player.ClickNext()
+		player.ClickPrevious()
+		player.ClickLock()
+		player.ClickPlay()
+		player.ClickLock()
+		player.ClickPlay()
+	}
 
 	// ################################
 }
