@@ -1,18 +1,15 @@
 package main
 
+
 // std
 import (
 	"encoding/json"
 	"fmt"
-	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
-	"learn-design-patterns-GoF/patterns/behavioral/command"
-	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
-	"learn-design-patterns-GoF/patterns/behavioral/iterator"
-	"learn-design-patterns-GoF/patterns/behavioral/mediator"
-	"learn-design-patterns-GoF/patterns/behavioral/memento"
-	"learn-design-patterns-GoF/patterns/behavioral/observer"
-	"learn-design-patterns-GoF/patterns/behavioral/state" // internal
-	"learn-design-patterns-GoF/patterns/behavioral/strategy"
+	"math"
+)
+
+// internal
+import (
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
 	"learn-design-patterns-GoF/patterns/creational/builder"
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
@@ -25,7 +22,15 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/facade"
 	"learn-design-patterns-GoF/patterns/structural/flyweight"
 	"learn-design-patterns-GoF/patterns/structural/proxy"
-	"math"
+	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
+	"learn-design-patterns-GoF/patterns/behavioral/command"
+	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
+	"learn-design-patterns-GoF/patterns/behavioral/iterator"
+	"learn-design-patterns-GoF/patterns/behavioral/mediator"
+	"learn-design-patterns-GoF/patterns/behavioral/memento"
+	"learn-design-patterns-GoF/patterns/behavioral/observer"
+	"learn-design-patterns-GoF/patterns/behavioral/state"
+	"learn-design-patterns-GoF/patterns/behavioral/strategy"
 )
 
 
@@ -501,6 +506,15 @@ func main() {
 	fmt.Println("--- Divide ---")
 	context_123_.SetStrategy(divide)
 	context_123_.ExecuteOperation(1, 2)
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Template Method => more information in https://refactoring.guru/design-patterns/template-method
+	fmt.Print("\n\nDesign Strategy Template Method\n\n")
+
+	
 
 	// ################################
 }
