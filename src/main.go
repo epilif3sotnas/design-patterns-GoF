@@ -1,15 +1,18 @@
 package main
 
-
 // std
 import (
 	"encoding/json"
 	"fmt"
-	"math"
-)
-
-// internal
-import (
+	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
+	"learn-design-patterns-GoF/patterns/behavioral/command"
+	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
+	"learn-design-patterns-GoF/patterns/behavioral/iterator"
+	"learn-design-patterns-GoF/patterns/behavioral/mediator"
+	"learn-design-patterns-GoF/patterns/behavioral/memento"
+	"learn-design-patterns-GoF/patterns/behavioral/observer"
+	"learn-design-patterns-GoF/patterns/behavioral/state" // internal
+	"learn-design-patterns-GoF/patterns/behavioral/strategy"
 	"learn-design-patterns-GoF/patterns/creational/abstractfactory"
 	"learn-design-patterns-GoF/patterns/creational/builder"
 	"learn-design-patterns-GoF/patterns/creational/factorymethod"
@@ -22,14 +25,7 @@ import (
 	"learn-design-patterns-GoF/patterns/structural/facade"
 	"learn-design-patterns-GoF/patterns/structural/flyweight"
 	"learn-design-patterns-GoF/patterns/structural/proxy"
-	"learn-design-patterns-GoF/patterns/behavioral/chainofresponsability"
-	"learn-design-patterns-GoF/patterns/behavioral/command"
-	"learn-design-patterns-GoF/patterns/behavioral/interpreter"
-	"learn-design-patterns-GoF/patterns/behavioral/iterator"
-	"learn-design-patterns-GoF/patterns/behavioral/mediator"
-	"learn-design-patterns-GoF/patterns/behavioral/memento"
-	"learn-design-patterns-GoF/patterns/behavioral/observer"
-	"learn-design-patterns-GoF/patterns/behavioral/state"
+	"math"
 )
 
 
@@ -474,6 +470,37 @@ func main() {
 		player.ClickLock()
 		player.ClickPlay()
 	}
+
+	// ################################
+
+
+	// ################################
+	// Design Pattern Strategy => more information in https://refactoring.guru/design-patterns/strategy
+	fmt.Print("\n\nDesign Pattern Strategy\n\n")
+
+	add := strategy.NewAdd()
+	subtract := strategy.NewSubtract()
+	multiply := strategy.NewMultiply()
+	divide := strategy.NewDivide()
+	
+	context_123_ := strategy.NewContext(nil)
+
+
+	fmt.Println("--- Add ---")
+	context_123_.SetStrategy(add)
+	context_123_.ExecuteOperation(1, 2)
+
+	fmt.Println("--- Subtract ---")
+	context_123_.SetStrategy(subtract)
+	context_123_.ExecuteOperation(1, 2)
+
+	fmt.Println("--- Multiply ---")
+	context_123_.SetStrategy(multiply)
+	context_123_.ExecuteOperation(1, 2)
+
+	fmt.Println("--- Divide ---")
+	context_123_.SetStrategy(divide)
+	context_123_.ExecuteOperation(1, 2)
 
 	// ################################
 }
