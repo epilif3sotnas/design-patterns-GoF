@@ -31,6 +31,7 @@ import (
 	"learn-design-patterns-GoF/patterns/behavioral/observer"
 	"learn-design-patterns-GoF/patterns/behavioral/state"
 	"learn-design-patterns-GoF/patterns/behavioral/strategy"
+	"learn-design-patterns-GoF/patterns/behavioral/templatemethod"
 )
 
 
@@ -514,7 +515,11 @@ func main() {
 	// Design Pattern Template Method => more information in https://refactoring.guru/design-patterns/template-method
 	fmt.Print("\n\nDesign Strategy Template Method\n\n")
 
-	
+	orcsAI := templatemethod.NewOrcsAI()
+	monstersAI := templatemethod.NewMonstersAI()
+
+	orcsAI.Turn()
+	monstersAI.Turn()
 
 	// ################################
 }
